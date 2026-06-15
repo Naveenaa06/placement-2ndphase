@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body{
+        text-align:center;
+        background-color:lightblue;
+        font-family:Arial;
+    }
+
+    h1{
+        color:darkblue;
+    }
+
+    input{
+        padding:8px;
+        border:1px solid black;
+        border-radius:5px;
+    }
+
+    button{
+        padding:10px;
+        width:100px;
+        margin:5px;
+        background-color:navy;
+        color:white;
+        border:none;
+        border-radius:5px;
+        font-weight:bold;
+    }
+
+
+    button:hover{
+        background-color:blue;
+    }
+
+    #result{
+        font-weight: bold;
+        color:darkred;
+        margin-top:20px;
+    }
+</style>
+
+<body>
+
+<div class="calculator">
+
+    <h1>Scientific Calculator</h1>
+
+    <input type="number" id="num1" placeholder="Enter first number">
+
+    <input type="number" id="num2" placeholder="Enter second number">
+    <br><br>
+
+    <div class="buttons">
+        <button class="operator" onclick="Add()">+</button>
+        <button class="operator" onclick="Sub()">-</button>
+        <button class="operator" onclick="Mul()">*</button>
+        <button class="operator" onclick="Quo()">/</button>
+        <button class="operator" onclick="Rem()">%</button>
+        <br><br>
+
+        <button class="trig" onclick="logar()">log</button>
+        <button class="trig" onclick="trigsin()">sin</button>
+        <button class="trig" onclick="trigcos()">cos</button>
+        <button class="trig" onclick="trigtan()">tan</button>
+        <button class="spi" onclick="spiral()">spiralmatrix</button>
+
+    </div>
+
+    <div class="result" id="result"></div>
+
+</div>
+<script>
+    async function Add() {
+        const n1 = Number(document.getElementById("num1").value);
+        const n2 = Number(document.getElementById("num2").value);
+        const response = await
+        fetch(`http://localhost:8080/calc/add/${n1}/${n2}`);
+        const text = await response.text();
+        document.getElementById("result").innerText = text;
+    }
+    async function Sub() {
+        const n1 = Number(document.getElementById("num1").value);
+        const n2 = Number(document.getElementById("num2").value);
+        const response = await
+            fetch(`http://localhost:8080/calc/sub/${n1}/${n2}`);
+        const text = await response.text();
+        document.getElementById("result").innerText = text;
+    }
+    async function Mul() {
+        const n1 = Number(document.getElementById("num1").value);
+        const n2 = Number(document.getElementById("num2").value);
+        const response = await
+            fetch(`http://localhost:8080/calc/mul/${n1}/${n2}`);
+        const text = await response.text();
+        document.getElementById("result").innerText = text;
+    }
+    async function Quo() {
+        const n1 = Number(document.getElementById("num1").value);
+        const n2 = Number(document.getElementById("num2").value);
+        const response = await
+            fetch(`http://localhost:8080/calc/quo/${n1}/${n2}`);
+        const text = await response.text();
+        document.getElementById("result").innerText = text;
+    }
+    async function Rem() {
+        const n1 = Number(document.getElementById("num1").value);
+        const n2 = Number(document.getElementById("num2").value);
+        const response = await
+            fetch(`http://localhost:8080/calc/rem/${n1}/${n2}`);
+        const text = await response.text();
+        document.getElementById("result").innerText = text;
+    }
+    async function logar() {
+        const n1 = Number(document.getElementById("num1").value);
+        const response = await
+            fetch(`http://localhost:8080/calc/log/${n1}`);
+        const text = await response.text();
+        document.getElementById("result").innerText = text;
+    }
+    async function trigsin() {
+        const n1 = Number(document.getElementById("num1").value);
+        const response = await
+            fetch(`http://localhost:8080/calc/sin/${n1}`);
+        const text = await response.text();
+        document.getElementById("result").innerText = text;
+    }
+    async function trigcos() {
+        const n1 = Number(document.getElementById("num1").value);
+        const response = await
+            fetch(`http://localhost:8080/calc/cos/${n1}`);
+        const text = await response.text();
+        document.getElementById("result").innerText = text;
+    }
+    async function trigtan() {
+        const n1 = Number(document.getElementById("num1").value);
+        const response = await
+            fetch(`http://localhost:8080/calc/tan/${n1}`);
+        const text = await response.text();
+        document.getElementById("result").innerText = text;
+    }
+    async function trigtan() {
+        const n1 = Number(document.getElementById("num1").value);
+        const response = await
+            fetch(`http://localhost:8080/calc/tan/${n1}`);
+        const text = await response.text();
+        document.getElementById("result").innerText = text;
+    }
+    async function spiral() {
+        const response = await
+            fetch(`http://localhost:8080/calc/spiral`);
+        const text = await response.text();
+        document.getElementById("result").innerText = text;
+    }
+
+</script>
+
+</body>
+</html>
